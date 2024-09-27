@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const Slider = require('../models/Slider');
 
 const getAllSliders = async (req, res) => {
