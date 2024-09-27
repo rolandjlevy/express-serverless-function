@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
+const slidersHandler = require('./api/sliders');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const itemRouter = require('./routes/items');
-app.use(itemRouter);
 
 app.get('/', (req, res) => {
   res.send(
@@ -12,6 +11,8 @@ app.get('/', (req, res) => {
     <a href="/sliders">sliders</a>
     `);
 });
+
+app.get('/sliders', slidersHandler.getAllSliders);
 
 /*////////////////*/
 /* Error handling */
