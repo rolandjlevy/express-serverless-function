@@ -1,13 +1,4 @@
 {
-  "version": 2,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs16.x"
-    }
-  },
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/$1" }
-  ],
-  "builds": [{ "src": "*.js", "use": "@vercel/node" }]
+  "builds": [{ "src": "*.js", "use": "@vercel/node" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
