@@ -1,15 +1,23 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const slidersHandler = require('./api/sliders');
+const Slider = require('./models/Slider');
 
+// const slidersHandler = require('./api/sliders');
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/sliders', slidersHandler.getAllSliders);
+app.get('/sliders', async (req, res) => {
+  try {
+    const sliders = await Slider.find();
+    res.json(sliders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 app.get('/', (req, res) => {
   res.send(
